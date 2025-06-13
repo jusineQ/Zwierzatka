@@ -1,0 +1,48 @@
+﻿@model Zwierzatka.Models.Zwierze
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-action="Dodaj">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="imie" class="control-label"></label>
+        <input asp-for="imie" class="form-control" required />
+        <span asp-validation-for="imie" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="wiek" class="control-label"></label>
+        <input asp-for="wiek" class="form-control" required />
+        <span asp-validation-for="wiek" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="rasa" class="control-label"></label>
+        <input asp-for="rasa" class="form-control" required />
+        <span asp-validation-for="rasa" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="notatki" class="control-label"></label>
+        <textarea asp-for="notatki" class="form-control" required rows="4" cols="50"></textarea>
+        <span asp-validation-for="notatki" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input asp-for="uzytkownikId" class="form-control" value="@ViewBag.IDU" type="hidden"/>
+        
+    </div>
+
+    
+    
+    <div class="form-group">
+        <input type="submit" value="Dodaj" class="btn btn-primary" />
+    </div>
+</form>
+<div class="form-group">
+    <button asp-action="Lista" asp-route-i="@ViewBag.IDU" class="btn alert-danger"> Anuluj </button>
+</div>
+
+
+
+

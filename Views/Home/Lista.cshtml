@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Zwierzatka.Models.Zwierze>
+
+@{
+    ViewData["Title"] = "Lista Zwierząt";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().id)</th>
+            <th>@Html.DisplayNameFor(model => model.First().imie)</th>
+            <th>@Html.DisplayNameFor(model => model.First().wiek)</th>
+            <th>@Html.DisplayNameFor(model => model.First().rasa)</th>
+            <th>@Html.DisplayNameFor(model => model.First().zdjecie)</th>
+            <th>@Html.DisplayNameFor(model => model.First().notatki)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.imie</td>
+                <td>@item.wiek</td>
+                <td>@item.rasa</td>
+                <td>
+                    <img src="~/images/@item.zdjecie" alt="@item.imie" style="max-height: 100px;" />
+                </td>
+                <td>@item.notatki</td>
+                <td><a asp-action="Delete" asp-route-id="@item.id" asp-route-uid="@ViewBag.LID">Usun</a></td>
+                <td><a asp-action="Edit" asp-route-id="@item.id" asp-route-name="@item.imie" asp-route-age="@item.wiek" asp-route-type="@item.rasa" asp-route-notes="@item.notatki" asp-route-uid="@ViewBag.LID">Edytuj</a></td>
+            </tr>
+        }
+
+        <a asp-action="Dodaj" asp-route-idUzytkownika="@ViewBag.LID">Dodawanie</a>
+
+    </tbody>
+</table>
